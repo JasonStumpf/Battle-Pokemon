@@ -1,0 +1,39 @@
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.background-home{
+    background-image: url("../static/images/background1.png");
+}
+
+.background-trainer{
+    background-image: url("../static/images/background2.png");
+}
+
+.background-team{
+    background-image: url("../static/images/background3.png");
+}
+
+.background-battle{
+    background-image: url("../static/images/background4.png");
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+}
+
+.card {
+    text-align: center;
+    background-color: grey;
+    border-color: black;
+}
+
+.list-group-item {
+    background-color: lightgrey;
+    border-color: black;
+    font-size: x-large;
+}

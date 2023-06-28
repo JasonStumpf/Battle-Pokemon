@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Team</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body class="background-team">
+    {% include 'navbar.html' %}
+    
+    <div class="container text-center">
+        {% for p in p_list %}
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{p.sprite}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h1 class="card-title">{{p.name}}</h1>
+                        <h5 class="card-text">{{p.ability}}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">HP: {{p.hp}}</li>
+                        <li class="list-group-item">Attack: {{p.attack}}</li>
+                        <li class="list-group-item">Defense: {{p.defense}}</li>
+                    </ul>
+                    <a href="{{ url_for('release', pokemon_id=p.id) }}" class="btn btn-danger">Release</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>

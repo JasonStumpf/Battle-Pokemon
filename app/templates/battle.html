@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Battle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body class="background-battle">
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            {% for t in t_list %}
+            {% if t != current_user %}
+            <div class="col-xl-12">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5>Trainer: {{ t.email }}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for pokemon in t.catching %}
+                        <li class="list-group-item">{{ pokemon.name }}</li>
+                        {% endfor %}
+                        <form action="{{ url_for('start_battle', user_id=t.id) }}" method="POST">
+                            <input type="hidden" name="current_user_id" value="{{ current_user.id }}">
+                            <button type="submit" class="btn btn-danger">BATTLE!</button>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
+
