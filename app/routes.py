@@ -81,3 +81,11 @@ def start_battle(user_id):
 
     return render_template('battle.html',winner=winner)
     
+@app.get('/pokemondata')
+def get_pokemon():
+    pokemons = Pokemon.query.all()
+    poke_list = [p.to_dict() for p in pokemons]
+    return {
+        'status' : 'ok',
+        'pokemons' : poke_list
+    }

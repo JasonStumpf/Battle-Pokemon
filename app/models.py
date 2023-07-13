@@ -71,3 +71,14 @@ class Pokemon(db.Model):
     def save_poke(self):
         db.session.add(self)
         db.session.commit()
+
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'name' : self.name,
+            'ability' : self.ability,
+            'sprite' : self.sprite,
+            'hp' : self.hp,
+            'attack' : self.attack,
+            'defense' : self.defense
+        }
