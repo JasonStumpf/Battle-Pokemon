@@ -90,11 +90,3 @@ def get_pokemon():
         'pokemons' : poke_list
     }
 
-@app.get('/pokemondata/<int:id>')
-def get_pokemon(id):
-    pokemon = Pokemon.query.get(id)
-    single_list = [pokemon.to_dict()]
-    return {
-        'status': 'ok',
-        'pokemon': single_list
-    }
